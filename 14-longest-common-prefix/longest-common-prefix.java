@@ -1,17 +1,31 @@
 class Solution {
     public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
 
-        String prefix = strs[0];
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        // Find the shortest string
+        String shortest = strs[0];
 
         for (int i = 1; i < strs.length; i++) {
-            while (strs[i].indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
+            if (strs[i].length() < shortest.length()) {
+                shortest = strs[i];
+            }
+        }
+        for (int i = 0; i < shortest.length(); i++) {
 
-                if (prefix.isEmpty()) return "";
+            char ch = shortest.charAt(i);
+
+            for (int j = 0; j < strs.length; j++) {
+
+                if (strs[j].charAt(i) != ch) {
+                    return shortest.substring(0, i);
+                }
+
             }
         }
 
-        return prefix;
+        return shortest;
     }
 }
