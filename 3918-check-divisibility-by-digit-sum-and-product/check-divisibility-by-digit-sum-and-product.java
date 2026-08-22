@@ -7,8 +7,8 @@ class Solution {
         while (n > 0) {
             int digit = n % 10;
 
-            addition += digit;
-            multiplication *= digit;
+            addition = addition+digit;
+            multiplication = multiplication*digit;
 
             n = n / 10;
         }
